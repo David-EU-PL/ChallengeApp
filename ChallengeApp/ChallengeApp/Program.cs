@@ -16,5 +16,5 @@ else if (isMale == true && age < 18)
 }
 else
 {
-    Console.WriteLine("A o kogo chodzi, tak naprawdę ??? :) ");
+    Console.WriteLine("Nie spełniono kryteriów");
 }

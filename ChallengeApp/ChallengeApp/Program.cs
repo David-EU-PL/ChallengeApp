@@ -16,5 +16,5 @@ else if (isMale == true && age < 18)
 }
 else
 {
-    Console.WriteLine("A o kogo chodzi ??? :))) :D");
+    Console.WriteLine("A o kogo chodzi ???");
 }

@@ -1,70 +1,54 @@
-﻿using System.Diagnostics.Metrics;
-using System;
-int number = 1010;
-string numberInString = number.ToString();     
-char[] lettters= numberInString.ToArray();
-Console.WriteLine("W liczbie " + number + " są następujące cyfry:");
-int counter0 = 0;
-int counter1 = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counter5 = 0;
-int counter6 = 0;
-int counter7 = 0;
-int counter8 = 0;
-int counter9 = 0;
+﻿using ChallengeApp;
 
-foreach (var letter in lettters)
+Employee employee1 = new Employee("Adam", "Kowalski", "32");
+Employee employee2 = new Employee("Monika", "Nowak", "40");
+Employee employee3 = new Employee("Zuzia", "Nocoń", "23");
+
+
+employee1.AddScore(5);
+employee1.AddScore(2);
+employee1.AddScore(2);
+employee1.AddScore(1);
+employee1.AddScore(3);
+
+employee2.AddScore(4);
+employee2.AddScore(7);
+employee2.AddScore(8);
+employee2.AddScore(4);
+employee2.AddScore(9);
+
+employee3.AddScore(7);
+employee3.AddScore(8);
+employee3.AddScore(9);
+employee3.AddScore(9);
+employee3.AddScore(9);
+
+var result1 = employee1.Result;
+var result2 = employee2.Result;
+var result3 = employee3.Result;
+   
+List<Employee> employees = new List<Employee>()
 {
-    if (letter == '0')
+employee1, employee2, employee3
+};
+int maxResult = 0;
+Employee? employeeWithMaxResult = null;
+foreach (var employee in employees)
+{
+    if(employee.Result > maxResult)
     {
-        counter0++;
-    }
-    else if (letter == '1')
-    {
-        counter1++;
-    }
-    else if (letter == '2')
-    {
-        counter2++;
-    }
-    else if (letter == '3')
-    {
-        counter3++;
-    }
-    else if (letter == '4')
-    {
-        counter4++;
-    }
-    else if (letter == '5')
-    {
-        counter5++;
-    }
-    else if (letter == '6')
-    {
-        counter6++;
-    }
-    else if (letter == '7')
-    {
-        counter7++;
-    }
-    else if (letter == '8')
-    {
-        counter8++;
-    }
-    else if (letter == '9')
-    {
-        counter9++;
+        employeeWithMaxResult = employee;
+        maxResult = employee.Result;
     }
 }
-Console.WriteLine("Cyfr 0 => " + counter0);
-Console.WriteLine("Cyfr 1 => " + counter1);
-Console.WriteLine("Cyfr 2 => " + counter2);
-Console.WriteLine("Cyfr 3 => " + counter3);
-Console.WriteLine("Cyfr 4 => " + counter4);
-Console.WriteLine("Cyfr 5 => " + counter5);
-Console.WriteLine("Cyfr 6 => " + counter6);
-Console.WriteLine("Cyfr 7 => " + counter7);
-Console.WriteLine("Cyfr 8 => " + counter8);
-Console.WriteLine("Cyfr 9 => " + counter9);
+Console.WriteLine("The best score has: " + employeeWithMaxResult.Name +" "+ employeeWithMaxResult.Surname);
+Console.WriteLine("Age: " + employeeWithMaxResult.Age);
+Console.WriteLine("Score: " + maxResult);
+Console.WriteLine("Congratulations!");
+Console.WriteLine("");
+Console.WriteLine("SUMMARY: ");
+Console.WriteLine("Employee 1 is: " + employee1.Name + " " + employee1.Surname + " " + "age: " + employee1.Age + " " + "score: " + employee1.Result);
+Console.WriteLine("Employee 2 is: " + employee2.Name + " " + employee2.Surname + " " + "age: " + employee2.Age + " " + "score: " + employee2.Result);
+Console.WriteLine("Employee 3 is: " + employee3.Name + " " + employee3.Surname + " " + "age: " + employee3.Age + " " + "score: " + employee3.Result);
+Console.WriteLine("");
+Console.WriteLine("Thank you and see you!");

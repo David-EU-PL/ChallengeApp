@@ -10,6 +10,12 @@
             this.Surname = surname;
             this.Age = age;
         }
+
+        public Employee(string name)
+        {
+            Name = name;
+        }
+
         public string Surname { get; private set; }
         public string Name { get; private set; }
         public string Age { get; private set; }

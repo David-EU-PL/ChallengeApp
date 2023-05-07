@@ -1,14 +1,15 @@
-﻿namespace ChallengeApp
+﻿using System.Diagnostics;
+
+namespace ChallengeApp
 {
     public class Employee
     {
-        private List<int> score = new List<int>();
+        private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname, string age)
+        public Employee(string name, string surname)
         {
             this.Name = name;
             this.Surname = surname;
-            this.Age = age;
         }
 
         public Employee(string name)
@@ -18,17 +19,25 @@
 
         public string Surname { get; private set; }
         public string Name { get; private set; }
-        public string Age { get; private set; }
-        public void AddScore(int number)
+        public void AddGrade(float grade)
         {
-            this.score.Add(number);
+            this.grades.Add(grade);
         }
-        public int Result
+        public Statistics GetStatistics()
         {
-            get
+            var statistics = new Statistics();
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+
+            foreach(var grade in this.grades)
             {
-                return this.score.Sum();
+                statistics.Max = Math.Max(statistics.Max, grade); 
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Average += grade;
             }
+            statistics.Average /= this.grades.Count;
+            return statistics;
         }
     }
 }

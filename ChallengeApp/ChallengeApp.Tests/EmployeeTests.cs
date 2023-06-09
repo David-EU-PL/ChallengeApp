@@ -13,7 +13,7 @@ namespace ChallengeApp.Tests
         public void ValueMinStatistics()
         {
             // arrange
-            var employee = new Employee("Dawid", "Płatek");
+            var employee = new Employee("Jan", "Nowak");
             employee.AddGrade(2);
             employee.AddGrade(6);
             employee.AddGrade(6);
@@ -29,7 +29,7 @@ namespace ChallengeApp.Tests
         public void ValueMaxStatistics()
         {
             // arrange
-            var employee = new Employee("Dawid", "Płatek");
+            var employee = new Employee("Jan", "Nowak");
             employee.AddGrade(2);
             employee.AddGrade(6);
             employee.AddGrade(6);
@@ -45,7 +45,7 @@ namespace ChallengeApp.Tests
         public void ValueAverageStatistics()
         {
             // arrange
-            var employee = new Employee("Dawid", "Płatek");
+            var employee = new Employee("Jan", "Nowak");
             employee.AddGrade(2);
             employee.AddGrade(6);
             employee.AddGrade(6);
@@ -55,6 +55,24 @@ namespace ChallengeApp.Tests
 
             // assert
             Assert.AreEqual(Math.Round(4.67, 2), Math.Round(statistics.Average, 2));    
+        }
+        [Test]
+        
+        public void ValueAverageCorrect()
+        { 
+            // arrange
+            var employee = new Employee("Jan", "Nowak");
+            employee.AddGrade(60);
+            employee.AddGrade(40);
+            employee.AddGrade('B');
+            employee.AddGrade('E');
+
+            // act
+            var statistics = employee.GetStatistics();
+
+            // assert
+            Assert.AreEqual(50, statistics.Average);
+            Assert.AreEqual('C', statistics.AverageLetter);
         }
     }
 }
